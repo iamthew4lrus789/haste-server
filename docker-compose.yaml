@@ -3,17 +3,11 @@ services:
   haste-server:
     build: .
     networks:
-      - db-network
+      - proxynet
     environment:
-      - STORAGE_TYPE=memcached
-      - STORAGE_HOST=memcached
-      - STORAGE_PORT=11211
+      - STORAGE_TYPE=file
     ports:
       - 7777:7777
-  memcached:
-    image: memcached:latest
-    networks:
-      - db-network
 
 networks:
-  db-network:
+  proxynet:
